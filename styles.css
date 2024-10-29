@@ -1,0 +1,332 @@
+/* Importing Custom Fonts */
+@font-face {
+    font-family: 'UberMove';
+    src: url('./Fonts/UberMove-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UberMove';
+    src: url('./Fonts/UberMove-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UberMoveText';
+    src: url('./Fonts/UberMoveText-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UberMoveText';
+    src: url('./Fonts/UberMoveText-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* General Body Settings */
+body {
+    font-family: 'UberMoveText', Arial, sans-serif;
+    background: url('./Images/iranair.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Overlay for readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: -1;
+}
+
+/* Header Styling */
+header {
+    background: transparent;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-content {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a.btn {
+    background: #ff6600;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Slider Section */
+.slider-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel-cell {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+.caption h3 {
+    margin: 0;
+    font-family: 'UberMove', Arial, sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.caption .btn {
+    display: inline-block;
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.caption .btn:hover {
+    background-color: #e55d00;
+}
+
+/* Services Section */
+.service-wrapper {
+    padding: 50px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.service-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.service-content, .service-image {
+    flex: 1;
+    padding: 10px;
+}
+
+.service-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.service-content {
+    text-align: left;
+}
+
+hr.service-separator {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 40px 0;
+}
+
+/* About Us Section */
+.about-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.about-wrapper h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'UberMove', Arial, sans-serif;
+}
+
+.about-wrapper p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Footer Styling */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-icons a {
+    color: #ff6600;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #e55d00;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .service-row {
+        flex-direction: column;
+    }
+    .service-content, .service-image {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* Side-by-Side Container Styling */
+.side-by-side-container {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Map Styling */
+.map {
+    myMap.setMapType("osm-bright");
+	flex: 1;
+	padding: 0px;
+    height: 500px;
+	box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	let marker = L.marker([35.699756, 51.338076]).addTo(neshanMap);
+}
+
+/* Booking Form Styling */
+.booking-form-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.booking-form-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.booking-form-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.booking-form-container input,
+.booking-form-container select,
+.booking-form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.booking-form-container button {
+    background-color: #ff6600;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive Design: Stack Map and Form on Smaller Screens */
+@media (max-width: 768px) {
+    .side-by-side-container {
+        flex-direction: column;
+    }
+
+    .map,
+    .booking-form-container {
+        width: 100%;
+        height: auto;
+    }
+}

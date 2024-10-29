@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Book a Transfer - Asa Yazd Airport Transfer Service</title>
+    
+    <!-- jQuery (required for Persian Calendar) -->
+    <script src="./Scripts/jquery.min.js"></script>
+    
+    <!-- Persian Calendar CSS and JavaScript -->
+    <link rel="stylesheet" href="./Scripts/js-persian-cal.css" />
+    <script src="./Scripts/js-persian-cal.min.js"></script>
+
+    <!-- Neshan Leaflet SDK -->
+    <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"/>
+    <script src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"></script>
+
+    <!-- Link to main CSS file for consistent styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Main Header Section -->
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <a href="index.html">
+                <img src='./Images/logo.jpg' alt="CIP Airport Transfers Logo">
+            </a>
+            <h1>Asa Yazd: Your Airport Transfer Assist</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="btn">Home</a></li>
+                <li><a href="index.html#services" class="btn">Services</a></li>
+                <li><a href="about.html" class="btn">About Us</a></li>
+                <li><a href="index.html#contact" class="btn">Contact</a></li>
+                <li><a href="booking.html" class="btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Side-by-Side Container for Map and Form -->
+<div class="side-by-side-container">
+    <!-- Map Section -->
+    <div id="map" class="map"></div>
+
+    <!-- Booking Form Section -->
+    <div class="booking-form-container">
+        <h1>Book Your Airport Transfer</h1>
+        <form id="booking-form">
+            <label for="pickup-location">Pickup Location:</label>
+            <input type="text" id="pickup-location" name="pickup-location" placeholder="Select on map" readonly required>
+
+            <label for="dropoff-location">Dropoff Location:</label>
+            <input type="text" id="dropoff-location" name="dropoff-location" placeholder="Select on map" readonly required>
+
+            <label for="service-type">Service Type:</label>
+            <select id="service-type" name="service-type">
+                <option value="economy">Economy</option>
+                <option value="economy-plus">Economy Plus</option>
+            </select>
+
+            <label for="pickup-time">Pickup Time:</label>
+            <input type="text" id="pickup-time" name="pickup-time" class="pdate" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<!-- Persian Calendar and Map Initialization -->
+<script>
+    $(document).ready(function() {
+        // Initialize Persian Calendar on the Pickup Time field
+        new AMIB.persianCalendar('pickup-time');
+
+        // Initialize Neshan Leaflet Map
+        const neshanMap = new L.Map("map", {
+            key: "web.4beb3f2468444c7a82692aef82946064", // Replace with your valid Neshan API key
+            maptype: "neshan",
+            poi: true,
+            traffic: true,
+            center: [31.8974, 54.3569], // Centered on Yazd
+            zoom: 12
+        });
+
+        // Add marker to map on click
+        let pickupMarker, dropoffMarker;
+        neshanMap.on('click', function(e) {
+            const lat = e.latlng.lat;
+            const lon = e.latlng.lng;
+            const pickupInput = document.getElementById("pickup-location");
+            const dropoffInput = document.getElementById("dropoff-location");
+
+            if (pickupInput === document.activeElement) {
+                if (pickupMarker) neshanMap.removeLayer(pickupMarker);
+                pickupMarker = L.marker([lat, lon]).addTo(neshanMap);
+                pickupInput.value = `Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}`;
+            } else if (dropoffInput === document.activeElement) {
+                if (dropoffMarker) neshanMap.removeLayer(dropoffMarker);
+                dropoffMarker = L.marker([lat, lon]).addTo(neshanMap);
+                dropoffInput.value = `Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}`;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
